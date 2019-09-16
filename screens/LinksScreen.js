@@ -1,21 +1,38 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
 export default function LinksScreen() {
   return (
-    <ScrollView style={styles.container}>
-      {/**
-       * Go ahead and delete ExpoLinksView and replace it with your content;
-       * we just wanted to provide you with some helpful links.
-       */}
-      <ExpoLinksView />
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView>
+        <Image
+          resizeMode='contain'
+          style={{width: "100%", height: 808}}
+          source={require('../assets/demos/profilepage.jpeg')}
+        />
+        </ScrollView>
+    </View>
   );
 }
 
 LinksScreen.navigationOptions = {
-  title: 'Links',
+  title: 'Profile',
+  headerStyle: {height: 70},
+  headerLeft: (<TouchableOpacity onPress={() => alert('blackout!')}>
+      <Image
+        style={{height:50, width:40, marginLeft: 20,}}
+        source={require('../assets/icons/grapevine.png')}
+      />
+    </TouchableOpacity>
+  ),
+  headerRight: (<TouchableOpacity onPress={() => alert('shout!')}>
+      <Image
+        style={{height:50, width:40, marginRight: 20,}}
+        source={require('../assets/icons/whisper.png')}
+      />
+    </TouchableOpacity>
+  ),
 };
 
 const styles = StyleSheet.create({

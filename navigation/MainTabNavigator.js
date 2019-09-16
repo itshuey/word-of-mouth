@@ -5,41 +5,41 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import BlackBookScreen from '../screens/BlackBookScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
 });
 
-const LinksStack = createStackNavigator(
+const FeedStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Feed: HomeScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
+FeedStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       size={{width: 30, height: 30}}
-      regularImage={require('../assets/icons/seethroughglobeicon.png')}
       invertedImage={require('../assets/icons/globeicon.png')}
+      regularImage={require('../assets/icons/seethroughglobeicon.png')}
     />
   ),
 };
 
-LinksStack.path = '';
+FeedStack.path = '';
 
-const HomeStack = createStackNavigator(
+const ProfileStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Profile: LinksScreen,
   },
   config
 );
 
-HomeStack.navigationOptions = {
+ProfileStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -50,35 +50,42 @@ HomeStack.navigationOptions = {
   ),
 };
 
-HomeStack.path = '';
+ProfileStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const BookStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    BlackBook: BlackBookScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
+BookStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       size={{width: 20, height: 30}}
       regularImage={require('../assets/icons/seethroughblackbookicon.png')}
-      invertedImage={require('../assets/icons/blackbookicon.png')}
+      invertedImage={require('../assets/icons/blackbookiconwhite.png')}
     />
   ),
+  tabBarOptions: {
+    showLabel: false,
+    style: {
+      backgroundColor: 'black',
+      height: 60,
+    },
+  }
 };
 
-SettingsStack.path = '';
+BookStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  LinksStack,
-  HomeStack,
-  SettingsStack,
+  FeedStack,
+  ProfileStack,
+  BookStack,
 },
 {
-  tabBarOptions: { showLabel: false }
+  tabBarOptions: { showLabel: false, style: { height: 60 } }
 });
 
 tabNavigator.path = '';
