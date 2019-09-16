@@ -15,14 +15,30 @@ import {
 import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
+  let main = (<Image
+    resizeMode='contain'
+    style={{width: "100%", height: 1650}}
+    source={require('../assets/demos/sphere.jpeg')}
+  />);
+
+  let rightButton = (<Image
+    resizeMode='contain'
+    style={{width: "100%", height: 800}}
+    source={require('../assets/demos/shout.jpeg')}
+  />
+  );
+
+  let dailyButton = (<Image
+    resizeMode='contain'
+    style={{width: "100%", height: 800}}
+    source={require('../assets/demos/daily.jpeg')}
+  />
+  );
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{alignItems: 'center'}}>
-        <Image
-          resizeMode='contain'
-          style={{width: "100%", height: 1650}}
-          source={require('../assets/demos/sphere.jpeg')}
-        />
+        {main}
       </ScrollView>
     </View>
   );
