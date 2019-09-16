@@ -12,29 +12,6 @@ const config = Platform.select({
   default: {},
 });
 
-const HomeStack = createStackNavigator(
-  {
-    Home: HomeScreen,
-  },
-  config
-);
-
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
-
-HomeStack.path = '';
-
 const LinksStack = createStackNavigator(
   {
     Links: LinksScreen,
@@ -43,13 +20,37 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon
+      focused={focused}
+      size={{width: 30, height: 30}}
+      regularImage={require('../assets/icons/seethroughglobeicon.png')}
+      invertedImage={require('../assets/icons/globeicon.png')}
+    />
   ),
 };
 
 LinksStack.path = '';
+
+const HomeStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+  },
+  config
+);
+
+HomeStack.navigationOptions = {
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      size={{width: 50, height: 50}}
+      regularImage={require('../assets/icons/profileicon.png')}
+      invertedImage={require('../assets/icons/profileiconselected.png')}
+    />
+  ),
+};
+
+HomeStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
@@ -59,18 +60,25 @@ const SettingsStack = createStackNavigator(
 );
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon
+      focused={focused}
+      size={{width: 20, height: 30}}
+      regularImage={require('../assets/icons/seethroughblackbookicon.png')}
+      invertedImage={require('../assets/icons/blackbookicon.png')}
+    />
   ),
 };
 
 SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
   LinksStack,
+  HomeStack,
   SettingsStack,
+},
+{
+  tabBarOptions: { showLabel: false }
 });
 
 tabNavigator.path = '';

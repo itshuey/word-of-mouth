@@ -1,5 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
+import ContentPanel from '../components/ContentPanel'
 import {
   Image,
   Platform,
@@ -40,7 +41,7 @@ export default function HomeScreen() {
           </View>
 
           <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
+            Word of Mouth Feed
           </Text>
         </View>
 
@@ -51,6 +52,9 @@ export default function HomeScreen() {
             </Text>
           </TouchableOpacity>
         </View>
+
+
+        <ContentPanel text={"Post 2: Lorem Ipsum"}/>
       </ScrollView>
 
       <View style={styles.tabBarInfoContainer}>
@@ -122,6 +126,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 30,
+    borderRadius: 3,
   },
   welcomeContainer: {
     alignItems: 'center',
@@ -136,6 +141,10 @@ const styles = StyleSheet.create({
     marginLeft: -10,
   },
   getStartedContainer: {
+    alignItems: 'center',
+    marginHorizontal: 50,
+  },
+  contentContainer: {
     alignItems: 'center',
     marginHorizontal: 50,
   },
